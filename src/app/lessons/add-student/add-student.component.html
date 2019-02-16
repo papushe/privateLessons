@@ -1,0 +1,27 @@
+<div class="row formWrapper">
+  <form (submit)="addStudent(studentForm)" #studentForm="ngForm">
+    <input
+      type="text"
+      #name="ngModel"
+      name="name"
+      ngModel
+      required
+      placeholder="Name">
+    <input
+      type="number"
+      #number="ngModel"
+      name="time"
+      min="1"
+      ngModel
+      required
+      placeholder="Time">
+    <input
+      type="date"
+      #date="ngModel"
+      name="date"
+      ngModel
+      required
+      placeholder="Date">
+    <button type="submit" [disabled]="studentForm.invalid">Create New Studen</button>
+  </form>
+</div>

@@ -1,18 +1,30 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {LessonComponent} from './lessons/lesson/lesson.component';
+import {LessonsComponent} from "./lessons/lessons.component";
+import {FormsModule} from "@angular/forms";
+import {LessonService} from "./lessons/service/lesson.service";
+import { AddLessonComponent } from './lessons/add-lesson/add-lesson.component';
+import { AddStudentComponent } from './lessons/add-student/add-student.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LessonsComponent,
+    LessonComponent,
+    AddLessonComponent,
+    AddStudentComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [LessonService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
