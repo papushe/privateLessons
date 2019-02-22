@@ -1,41 +1,50 @@
-<div class="row nameWrapper">
-  <h3>{{lesson.name}}</h3>
-</div>
 <div class="row">
-  <div class="col-md-4">
-    <h5>Date</h5>
+  <div class="row nameAndToggleWrapper" (click)="toggleExpand()">
+    <div class="col-md-6 nameWrapper">
+      <h3>{{lesson.name}}</h3>
+    </div>
+    <div class="col-md-6 toggleWrapper">
+      <h3 class="glyphicon glyphicon-chevron-up" *ngIf="lesson.expand"></h3>
+      <h3 class="glyphicon glyphicon-chevron-down" *ngIf="!lesson.expand"></h3>
+    </div>
   </div>
-  <div class="col-md-4">
-    <h5>Time</h5>
-  </div>
-  <div class="col-md-4">
-    <h5>Money</h5>
+  <div class="row expended" *ngIf="lesson.expand">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>Date</h5>
+      </div>
+      <div class="col-md-4">
+        <h5>Time</h5>
+      </div>
+      <div class="col-md-4">
+        <h5>Money</h5>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <p *ngFor="let d of lesson.data">
+          <span>{{d.date}}</span>
+        </p>
+      </div>
+      <div class="col-md-4">
+        <p *ngFor="let t of lesson.data">
+          <span>{{t.time}}</span>
+        </p>
+        <p class="totalAmountWrapper">
+          <span>Total</span>
+        </p>
+      </div>
+      <div class="col-md-4">
+        <p *ngFor="let m of lesson.data">
+          <span>{{m.time *100}}</span>
+        </p>
+        <p>
+          <span>{{lesson.amount}}</span>
+        </p>
+      </div>
+    </div>
+    <button (click)="toggleShowAddLesson(lesson.name)" class="btn btn-info unClose">Add Lesson</button>
   </div>
 </div>
-
-<div class="row">
-  <div class="col-md-4">
-    <p *ngFor="let d of lesson.data">
-      <span>{{d.date}}</span>
-    </p>
-  </div>
-  <div class="col-md-4">
-    <p *ngFor="let t of lesson.data">
-      <span>{{t.time}}</span>
-    </p>
-    <p class="totalAmountWrapper">
-      <span>Total</span>
-    </p>
-  </div>
-  <div class="col-md-4">
-    <p *ngFor="let m of lesson.data">
-      <span>{{m.time *100}}</span>
-    </p>
-    <p>
-      <span>{{lesson.amount}}</span>
-    </p>
-  </div>
-</div>
-
-
 

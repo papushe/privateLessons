@@ -1,26 +1,35 @@
-<div class="row formWrapper">
-  <form (submit)="addLesson(lessonForm)" #lessonForm="ngForm">
-    <select name="name"
-            #name="ngModel"
-            ngModel
-            required>
-      <option value="{{lesson.name}}" *ngFor="let lesson of lessonService.lessons">{{lesson.name}}</option>
-    </select>
-    <input
-      type="number"
-      #number="ngModel"
-      name="time"
-      min="1"
-      ngModel
-      required
-      placeholder="Time">
-    <input
-      type="date"
-      #date="ngModel"
-      name="date"
-      ngModel
-      required
-      placeholder="Date">
-    <button type="submit" [disabled]="lessonForm.invalid">Add</button>
-  </form>
+<div class="row formAddLessonWrapper">
+  <div class="formAddLesson unClose" clickOutSide (clickOutSide)="closeModal()">
+    <h4 class="glyphicon glyphicon-remove" (click)="closeModal()"></h4>
+    <h3 class="addLessonTitle">Add Lesson</h3>
+    <form (submit)="addLesson(lessonForm)" #lessonForm="ngForm" class="unClose">
+      <div class="inputElementWrapper">
+        <h5>{{studentName}}</h5>
+      </div>
+      <div class="inputElementWrapper">
+        <input
+          type="number"
+          #number="ngModel"
+          name="time"
+          min="1"
+          ngModel
+          required
+          class="unClose"
+          placeholder="Time">
+      </div>
+      <div class="inputElementWrapper">
+        <input
+          type="date"
+          #date="ngModel"
+          name="date"
+          ngModel
+          required
+          class="unClose"
+          placeholder="Date">
+      </div>
+      <div class="inputElementWrapper">
+        <button type="submit" class="btn btn-success" [disabled]="lessonForm.invalid">Add</button>
+      </div>
+    </form>
+  </div>
 </div>

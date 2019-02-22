@@ -1,11 +1,44 @@
-button[disabled] {
-  color: lightgray;
+.buttonActionWrapper {
+  text-align: center;
+  padding: 10px;
 }
 
-.row {
-  margin: 0;
+.btn.unClose {
+  margin: 5px;
 }
 
-.formWrapper{
-  padding: 15px;
+.formAddLessonWrapper, .formAddStudentWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: lightgray;
+  opacity: 0.9;
+  .formAddLesson, .formAddStudent {
+    position: relative;
+    padding: 5%;
+    background: white;
+    box-shadow: 0 0 8px 0 black;
+    .glyphicon {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      margin: 0;
+      cursor: pointer;
+    }
+    .addLessonTitle, .addStudentTitle {
+      text-align: center;
+    }
+    .selectName, input {
+      width: 100%;
+    }
+    .inputElementWrapper {
+      margin: 5px;
+      text-align: center;
+    }
+  }
 }

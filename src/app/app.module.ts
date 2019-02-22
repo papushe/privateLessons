@@ -7,8 +7,9 @@ import {LessonComponent} from './lessons/lesson/lesson.component';
 import {LessonsComponent} from "./lessons/lessons.component";
 import {FormsModule} from "@angular/forms";
 import {LessonService} from "./lessons/service/lesson.service";
-import { AddLessonComponent } from './lessons/add-lesson/add-lesson.component';
-import { AddStudentComponent } from './lessons/add-student/add-student.component';
+import {AddLessonComponent} from './lessons/add-lesson/add-lesson.component';
+import {AddStudentComponent} from './lessons/add-student/add-student.component';
+import {ClickOutSideDirective} from './lessons/directive/click-out-side.directive';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AddStudentComponent } from './lessons/add-student/add-student.component
     LessonsComponent,
     LessonComponent,
     AddLessonComponent,
-    AddStudentComponent
+    AddStudentComponent,
+    ClickOutSideDirective
   ],
   imports: [
     BrowserModule,

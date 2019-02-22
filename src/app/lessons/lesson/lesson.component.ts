@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Lesson} from "../model/lesson";
 import {LessonService} from "../service/lesson.service";
 import {Subscription} from "rxjs/index";
@@ -8,15 +8,17 @@ import {Subscription} from "rxjs/index";
   templateUrl: './lesson.component.html',
   styleUrls: ['./lesson.component.scss']
 })
-export class LessonComponent implements OnInit, OnChanges, OnDestroy {
+export class LessonComponent implements OnInit, OnDestroy {
 
   @Input() lesson: Lesson;
   newAmountOnAddLessonSubscription: Subscription;
+  @Output() studentName = new EventEmitter<string>();
 
   constructor(private lessonService: LessonService) {
   }
 
   ngOnInit() {
+    this.calculateAmount();
     this.newAmountOnAddLesson();
   }
 
@@ -27,24 +29,24 @@ export class LessonComponent implements OnInit, OnChanges, OnDestroy {
       })
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.calculateAmount();
-    console.log(changes);
-    this.lesson = changes.lesson.currentValue;
-  }
-
   calculateAmount() {
     let time = 0;
     for (let i = 0; i < this.lesson.data.length; i++) {
       time += this.lesson.data[i].time;
     }
-    console.log('hi');
     this.lesson.amount = time * 100;
+  }
+
+  toggleExpand() {
+    this.lesson.expand = !this.lesson.expand;
+  }
+
+  toggleShowAddLesson(name) {
+    this.studentName.emit(name);
   }
 
   ngOnDestroy() {
     this.newAmountOnAddLessonSubscription.unsubscribe();
   }
-
 
 }

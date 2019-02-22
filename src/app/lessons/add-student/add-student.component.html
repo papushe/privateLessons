@@ -1,27 +1,44 @@
-<div class="row formWrapper">
-  <form (submit)="addStudent(studentForm)" #studentForm="ngForm">
-    <input
-      type="text"
-      #name="ngModel"
-      name="name"
-      ngModel
-      required
-      placeholder="Name">
-    <input
-      type="number"
-      #number="ngModel"
-      name="time"
-      min="1"
-      ngModel
-      required
-      placeholder="Time">
-    <input
-      type="date"
-      #date="ngModel"
-      name="date"
-      ngModel
-      required
-      placeholder="Date">
-    <button type="submit" [disabled]="studentForm.invalid">Create New Studen</button>
-  </form>
+<div class="row formAddStudentWrapper">
+  <div class="formAddStudent unClose" clickOutSide (clickOutSide)="closeModal()">
+    <h4 class="glyphicon glyphicon-remove" (click)="closeModal()"></h4>
+    <h3 class="addStudentTitle">Add Student</h3>
+    <form (submit)="addStudent(studentForm)"
+          #studentForm="ngForm"
+          class="unClose">
+      <div class="inputElementWrapper">
+        <input
+          type="text"
+          #name="ngModel"
+          name="name"
+          ngModel
+          required
+          class="unClose"
+          placeholder="Name">
+      </div>
+      <div class="inputElementWrapper">
+        <input
+          type="number"
+          #number="ngModel"
+          name="time"
+          min="1"
+          ngModel
+          required
+          class="unClose"
+          placeholder="Time">
+      </div>
+      <div class="inputElementWrapper">
+        <input
+          type="date"
+          #date="ngModel"
+          name="date"
+          ngModel
+          required
+          class="unClose"
+          placeholder="Date">
+      </div>
+      <div class="inputElementWrapper">
+        <button type="submit"  class="btn btn-success"  [disabled]="studentForm.invalid">Add</button>
+      </div>
+    </form>
+  </div>
 </div>

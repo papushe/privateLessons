@@ -47,16 +47,17 @@ export class LessonService {
   constructor() {
   }
 
-  addLesson(lesson: NgForm) {
-    let name = lesson.value.name;
-    let date = lesson.value.date;
-    let time = lesson.value.time;
+  addLesson(studentName, formLesson: NgForm) {
+    let name = studentName;
+    let date = formLesson.value.date;
+    let time = formLesson.value.time;
 
     let index = this.lessons.map(
       (lesson) => {
         return lesson.name;
       }).indexOf(name);
     this.lessons[index].data.push({date: date, time: time});
+    this.lessons[index].expand = true;
     this.subLessonChange.next()
   }
 
@@ -73,6 +74,7 @@ export class LessonService {
       }]
     };
     this.lessons.push(lesson);
+    this.lessons[this.lessons.length - 1].expand = true;
   }
 
 }

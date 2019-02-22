@@ -1,12 +1,16 @@
+<div class="row buttonActionWrapper">
+  <button (click)="toggleShowAddStudent()" class="btn btn-info unClose">Add Student</button>
+</div>
 <div class="row">
-  <div class="col-md-4" *ngFor="let lesson of lessonService.lessons">
-    <app-lesson [lesson]="lesson"></app-lesson>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let lesson of lessonService.lessons">
+      <app-lesson [lesson]="lesson" (studentName)="getStudentName($event)"></app-lesson>
+    </div>
   </div>
 </div>
 
-<div class="row">
-  <app-add-lesson></app-add-lesson>
-</div>
-<div class="row">
-  <app-add-student></app-add-student>
-</div>
+
+<app-add-lesson *ngIf="showAddLesson" [studentName]="studentName" (close)="toggleShowAddLesson()"></app-add-lesson>
+
+<app-add-student *ngIf="showAddStudent" (close)="toggleShowAddStudent()"></app-add-student>
+

@@ -1,7 +1,15 @@
-.nameWrapper {
-  text-align: center;
+.nameAndToggleWrapper {
+  cursor: pointer;
 }
 
 .totalAmountWrapper {
   text-align: right;
+}
+
+.nameWrapper {
+  text-align: right;
+}
+
+.toggleWrapper {
+  text-align: left;
 }
